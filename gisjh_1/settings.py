@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -17,7 +17,7 @@ import osl as osl
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-local_env = open(osl.path(BASE_DIR,'.env'))
+local_env = open(os.path.join(BASE_DIR, '.env'))
 
 env_list = dict()
 
@@ -71,7 +71,7 @@ ROOT_URLCONF = 'gisjh_1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
