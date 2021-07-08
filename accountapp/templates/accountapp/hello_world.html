@@ -2,26 +2,21 @@
 
 {% block content %}
 
-    <style>
-        .testing {background-color: gold;
-        height: 48px;
-        width: 48px;
-        margin: 1rem;
-        border-radius: .5rem;
-        }
 
+    <div style="  margin:2rem; text-align: center ">
 
+        <h1>METHOD</h1>
 
+        <form action="/accounts/hello_world/" method="post">
+            {% csrf_token %}
+            <input type="text" name="hello_world_input">
 
-    </style>
-    <div style=" height: 20rem ; background-color : hotpink ; border-radius: 1rem ; margin:2rem">
+            <input class="btn btn-dark rounded-pill px-4" type="submit">
 
-    <h1>test </h1>
-
-    <div class=" testing" style="display: inline-block">block</div>
-    <div class=" testing" style="display: inline-block; width: 3rem; height: 3rem;">block</div>
-    <div class=" testing" style="display: inline-block; width: 3em; height: 3em;">block</div>
-    <div class=" testing" style="display: inline-block; width: 30%; height: 30%;">block</div>
+        </form>
+        {% if hello_world_output %}
+            <h3>{{ hello_world_output.text}}</h3>
+        {% endif %}
 
     </div>
 
