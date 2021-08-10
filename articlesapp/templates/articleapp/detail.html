@@ -14,7 +14,7 @@
 
         <hr>
 
-        <div claas="my-5">
+        <div class="my-5">
             {#      게시글 대표이미지, 글내용      #}
             <img src="{{ target_article.image.url }}"
                  class="article_image"
@@ -35,5 +35,33 @@
             </div>
             {% endif %}
         </div>
+
+        <hr>
+
+        <div class="text-center my-4">
+
+            {% for comment in target_article.comment.all %}
+
+                <div class="comment_box">
+                    <div>
+                        <span class="NNS_B"
+                              style="font-size: 1.3rem">
+                            {{ comment.writer.profile.nickname }}
+                        </span>
+                        <span>{{ comment.created_at }}</span>
+                    </div>
+                    <div>
+                        <p>
+                            {{ comment.content }}
+                        </p>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+            {% include 'commentapp/create.html' %}
+        </div>
+
+
     </div>
 {% endblock %}
